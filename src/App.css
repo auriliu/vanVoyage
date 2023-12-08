@@ -160,19 +160,6 @@ footer {
 
 /*** ABOUT PAGE ***/
 
-/* .about-page-container {
-  background: url("./assets/images/about-hero.png");
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  min-height: 350px;
-  color: white;
-  padding: 45px 23px;
-} */
-
 .about-hero-image {
   max-width: 100%;
 }
@@ -754,3 +741,9 @@ img.graph {
   color: #ff8c38;
   margin-right: 5px;
 }
+
+/* MY TEMP STUFF */
+/* li img {
+  list-style: none;
+  width: 200px;
+} */
