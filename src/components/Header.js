@@ -9,6 +9,7 @@ function Header() {
         #vanVoyage
       </Link>
       <nav>
+        <Link to="/host">host</Link>
         <Link to="/about">about</Link>
         <Link to="/vans">vans</Link>
       </nav>
