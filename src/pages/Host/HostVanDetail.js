@@ -54,7 +54,7 @@ function HostVanDetail() {
           photos
         </NavLink>
       </nav>
-      <Outlet />
+      <Outlet context={{ currentVan }} />
     </section>
   );
 }
