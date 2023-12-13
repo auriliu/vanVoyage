@@ -14,6 +14,9 @@ import Income from "./pages/Host/Income";
 import HostLayout from "./components/HostLayout";
 import HostVans from "./pages/Host/HostVans";
 import HostVanDetail from "./pages/Host/HostVanDetail";
+import HostVanPricing from "./pages/Host/HostVanPricing";
+import HostVanPhotos from "./pages/Host/HostVanPhotos";
+import HostVanInfo from "./pages/Host/HostVanInfo";
 
 import "./server";
 
@@ -30,7 +33,12 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path="income" element={<Income />} />
             <Route path="vans" element={<HostVans />} />
-            <Route path="vans/:id" element={<HostVanDetail />} />
+            <Route path="vans/:id" element={<HostVanDetail />}>
+              {/* once u create children, u need an Outlet to show them. */}
+              <Route index element={<HostVanInfo />} />
+              <Route path="photos" element={<HostVanPhotos />} />
+              <Route path="pricing" element={<HostVanPricing />} />
+            </Route>
             <Route path="reviews" element={<Reviews />} />
           </Route>
         </Route>
