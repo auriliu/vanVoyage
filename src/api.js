@@ -1,5 +1,8 @@
 export async function getVans() {
   const res = await fetch("/api/vans");
-  const data = res.json();
-  return data;
+  if (!res.ok) {
+    throw new Error("failed to fetch vans.");
+  }
+  const data = await res.json();
+  return data.vans;
 }

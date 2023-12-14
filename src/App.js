@@ -1,11 +1,16 @@
 //
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {
+  Route,
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
 
 import "./App.css";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
-import VansList from "./pages/Vans/VansList";
+import VansList, { loader as vansLoader } from "./pages/Vans/VansList";
 import VanDetail from "./pages/Vans/VanDetail";
 import Layout from "./components/Layout";
 import Dashboard from "./pages/Host/Dashboard";
@@ -18,35 +23,36 @@ import HostVanPricing from "./pages/Host/HostVanPricing";
 import HostVanPhotos from "./pages/Host/HostVanPhotos";
 import HostVanInfo from "./pages/Host/HostVanInfo";
 import DoesntExist from "./pages/DoesntExist";
+import Error from "./components/Error";
 
 import "./server";
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="vans" element={<VansList />} />
-          <Route path="vans/:id" element={<VanDetail />} />
-          <Route path="host" element={<HostLayout />}>
-            <Route index element={<Dashboard />} />
-            <Route path="income" element={<Income />} />
-            <Route path="vans" element={<HostVans />} />
-            <Route path="vans/:id" element={<HostVanDetail />}>
-              {/* once u create children, u need an Outlet to show them. */}
-              <Route index element={<HostVanInfo />} />
-              <Route path="photos" element={<HostVanPhotos />} />
-              <Route path="pricing" element={<HostVanPricing />} />
-            </Route>
-            <Route path="reviews" element={<Reviews />} />
-          </Route>
-          <Route path="*" element={<DoesntExist />} />
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
+      <Route path="about" element={<About />} />
+      <Route path="vans" element={<VansList />} loader={vansLoader} />
+      <Route path="vans/:id" element={<VanDetail />} />
+      <Route path="host" element={<HostLayout />}>
+        <Route index element={<Dashboard />} />
+        <Route path="income" element={<Income />} />
+        <Route path="vans" element={<HostVans />} errorElement={<Error />} />
+        <Route path="vans/:id" element={<HostVanDetail />}>
+          {/* once u create children, u need an Outlet to show them. */}
+          <Route index element={<HostVanInfo />} />
+          <Route path="photos" element={<HostVanPhotos />} />
+          <Route path="pricing" element={<HostVanPricing />} />
         </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+        <Route path="reviews" element={<Reviews />} />
+      </Route>
+      <Route path="*" element={<DoesntExist />} />
+    </Route>
+  )
+);
+
+function App() {
+  return <RouterProvider router={router} />;
 }
 
 export default App;
