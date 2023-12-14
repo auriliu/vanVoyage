@@ -8,6 +8,7 @@ function VanDetail() {
   const params = useParams();
 
   const location = useLocation();
+  console.log("test: " + location.state.search);
 
   useEffect(() => {
     fetch(`/api/vans/${params.id}`)
@@ -16,13 +17,14 @@ function VanDetail() {
   }, [params.id]);
 
   const search = location.state?.search || "";
+  const type = location.state?.type || "all";
 
   return (
     <div className="van-detail-container">
       {van ? (
         <div className="van-detail">
           <Link to={`../?${search}`} relative="path" className="back-button">
-            &larr; <span>back to vans </span>
+            &larr; <span>back to {type} vans</span>
           </Link>
           <img src={van.imageUrl} alt="" />
           <i className={`van-type ${van.type} selected`}>{van.type}</i>
