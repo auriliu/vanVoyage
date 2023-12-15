@@ -1,7 +1,6 @@
 //
 
 import { NavLink, Link } from "react-router-dom";
-import userIcon from "../assets/images/avatar-icon.png";
 
 function Header() {
   const activeStyle = {
@@ -32,12 +31,6 @@ function Header() {
           to="/vans"
         >
           vans
-        </NavLink>
-        <NavLink
-          style={({ isActive }) => (isActive ? activeStyle : null)}
-          to="/login"
-        >
-          login
         </NavLink>
       </nav>
     </header>
