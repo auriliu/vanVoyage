@@ -1,6 +1,7 @@
 //
 
 import { NavLink, Link } from "react-router-dom";
+import logo from "../assets/logo-no-background.png";
 
 function Header() {
   const activeStyle = {
@@ -11,15 +12,16 @@ function Header() {
   return (
     <header>
       <Link className="site-logo" to={"/"}>
-        #vanVoyage
+        {/* #vanVoyage */}
+        <img src={logo} alt="" className="logo" />
       </Link>
       <nav>
-        <NavLink
+        {/* <NavLink
           style={({ isActive }) => (isActive ? activeStyle : null)}
           to="/host"
         >
           host
-        </NavLink>
+        </NavLink> */}
         <NavLink
           style={({ isActive }) => (isActive ? activeStyle : null)}
           to="/about"

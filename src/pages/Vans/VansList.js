@@ -40,7 +40,7 @@ function VansList() {
         to={van.id}
         state={{ search: searchParams.toString(), type: typeFilter }}
       >
-        <img src={van.imageUrl} alt="" />
+        <img src={van.imageUrl} alt="" className="van-img" />
         <div className="van-info">
           <h3>{van.name}</h3>
           <p>
